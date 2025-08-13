@@ -1,19 +1,12 @@
-let awesomeName: string = "shakeAndBake";
+let greeting: string = "Hello, TS";
+greeting = greeting.toUpperCase();
 
-awesomeName = "something";
+let age: number = 25;
+age += 5;
 
-awesomeName = awesomeName.toUpperCase();
-console.log(awesomeName);
+let isAdult: boolean = age >= 18;
+console.log(isAdult);
 
-// awesomeName = 123;
-
-let amount: number = 20;
-amount = 12 - 1;
-
-// amount = "pants";
-
-let isAwesome: boolean = true;
-
-isAwesome = false;
-
-// isAwesome = "shakeAndBake";
+// greeting = 10;
+// age = "thirty";
+// isAdult = "yes";
