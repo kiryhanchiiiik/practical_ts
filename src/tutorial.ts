@@ -1,12 +1,10 @@
-let greeting: string = "Hello, TS";
-greeting = greeting.toUpperCase();
+let tax: number | string = 10;
 
-let age: number = 25;
-age += 5;
+tax = 100;
+tax = "$10";
 
-let isAdult: boolean = age >= 18;
-console.log(isAdult);
+let requestStatus: "pending" | "success" | "error" = "pending";
 
-// greeting = 10;
-// age = "thirty";
-// isAdult = "yes";
+requestStatus = "success";
+requestStatus = "error";
+// requestStatus = "random";
