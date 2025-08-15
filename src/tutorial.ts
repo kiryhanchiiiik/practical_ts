@@ -1,8 +1,11 @@
-let discount: number | string = 20;
-discount = "20%";
-// discount = true;
+let prices: number[] = [100, 75, 42];
+// prices.push("hello");
 
-let orderStatus: "processing" | "shipped" | "delivered" = "processing";
+let fruit: string[] = ["apple", "orange"];
 
-orderStatus = "shipped";
-// orderStatus = "cancelled";
+// let randomeValues: [] = ["hello"];
+let emptyValues: number[] = [];
+
+let names = ["peter", "susan", 1];
+
+let array: (string | boolean)[] = ["apple", true, "orange", false];
