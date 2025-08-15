@@ -1,11 +1,9 @@
-let prices: number[] = [100, 75, 42];
-// prices.push("hello");
+let temperatures: number[] = [20, 25, 30];
 
-let fruit: string[] = ["apple", "orange"];
+// temperatures.push("twenty five");
 
-// let randomeValues: [] = ["hello"];
-let emptyValues: number[] = [];
+let colors: string[] = ["red", "green", "purple"];
 
-let names = ["peter", "susan", 1];
+// colors.push(true);
 
-let array: (string | boolean)[] = ["apple", true, "orange", false];
+let mixArray: (number | string)[] = [1, "two", 3];
