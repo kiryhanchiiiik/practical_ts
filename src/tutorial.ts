@@ -1,10 +1,11 @@
-function sayHi(name: string) {
-  console.log(`Hello there ${name.toUpperCase()}`);
+function calculateDiscount(price: number) {
+  const hasDiscount = false;
+
+  if (hasDiscount) {
+    return "Discount Applied";
+  }
+
+  return price * 0.9;
 }
 
-sayHi("John");
-// sayHi(3);
-
-// - any
-// - config
-// - type
+const finalPrice = calculateDiscount(200);
