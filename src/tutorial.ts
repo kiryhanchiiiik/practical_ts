@@ -1,11 +1,9 @@
-function calculateDiscount(price: number) {
-  const hasDiscount = false;
-
-  if (hasDiscount) {
-    return "Discount Applied";
-  }
-
-  return price * 0.9;
+function addThree(number: any) {
+  let anotherNumber: number = 3;
+  return number + anotherNumber;
 }
 
-const finalPrice = calculateDiscount(200);
+const result = addThree(3);
+const someValue = result;
+
+someValue.myMethod();
