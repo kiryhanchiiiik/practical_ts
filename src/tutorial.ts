@@ -22,3 +22,4 @@ const newStudent = {
 };
 
 createStudent(newStudent);
+createStudent({ id: 1, name: "bob", email: "bobo@gmail.com" });
