@@ -16,3 +16,22 @@ function createUser(user: User): User {
 
   return user;
 }
+
+type StringOrNumber = string | number;
+
+let value: StringOrNumber;
+
+value = "Hello";
+value = 123;
+
+type Theme = "light" | "dark";
+
+let theme: Theme;
+theme = "dark";
+theme = "light";
+
+function setTheme(t: Theme) {
+  theme = t;
+}
+
+setTheme("dark");
