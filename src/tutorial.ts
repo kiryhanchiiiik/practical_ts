@@ -1,22 +1,7 @@
-type Book = { id: number; name: string; price: number };
+const propName = "age";
 
-type DiscountedBook = Book & { discount: number };
-
-const book1: Book = {
-  id: 1,
-  name: "how to cook a dragon",
-  price: 15,
+type Animal = {
+  [propName]: number;
 };
 
-const book2: Book = {
-  id: 2,
-  name: "the secret life of unicorns",
-  price: 18,
-};
-
-const discountedBook: DiscountedBook = {
-  id: 3,
-  name: "Gnomes vs Goblins",
-  price: 25,
-  discount: 0.15,
-};
+let tiger: Animal = { [propName]: 5 };
