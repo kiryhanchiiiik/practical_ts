@@ -1,16 +1,18 @@
-function processData(
-  input: string | number,
-  config: { reverse: boolean } = { reverse: false }
-): string | number {
-  if (typeof input === "number") {
-    return input * input;
-  } else {
-    return config.reverse
-      ? input.toUpperCase().split("").reverse().join("")
-      : input.toUpperCase();
-  }
-}
+type User = { id: number; name: string; isActive: boolean };
 
-console.log(processData(10));
-console.log(processData("Hello"));
-console.log(processData("Hello", { reverse: true }));
+const john: User = {
+  id: 1,
+  name: "john",
+  isActive: true,
+};
+const susan: User = {
+  id: 1,
+  name: "susan",
+  isActive: false,
+};
+
+function createUser(user: User): User {
+  console.log(`Hello there ${user.name.toUpperCase()} !!!`);
+
+  return user;
+}
