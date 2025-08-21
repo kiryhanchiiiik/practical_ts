@@ -1,44 +1,22 @@
-interface Book {
-  readonly isbn: number;
-  title: string;
-  author: string;
-  genre?: string;
-  // method
-  printAuthor(): void;
-  printTitle(message: string): string;
-  printSomething: (someValue: number) => number;
+interface Computer {
+  readonly id: number;
+  brand: string;
+  ram: number;
+  upgradeRam(increase: number): number;
+  storage?: number;
 }
 
-const deepWork: Book = {
-  isbn: 123,
-  title: "deep work",
-  author: "cal newport",
-  genre: "self-help",
-
-  printAuthor() {
-    console.log(this.author);
-  },
-
-  printTitle(message) {
-    return `${this.title} ${message}`;
-  },
-  //first option
-  // printSomething: function (someValue) {
-  //   return someValue;
-  // },
-
-  //second option
-  // printSomething: (someValue) => {
-  //   console.log(deepWork);
-
-  //   return someValue;
-  // },
-
-  //third option
-
-  printSomething(someValue) {
-    return someValue;
+const laptop: Computer = {
+  id: 1,
+  brand: "random brand",
+  ram: 8,
+  upgradeRam(amount) {
+    this.ram += amount;
+    return this.ram;
   },
 };
 
-deepWork.printSomething(34);
+laptop.storage = 256;
+
+console.log(laptop.upgradeRam(4));
+console.log(laptop);
