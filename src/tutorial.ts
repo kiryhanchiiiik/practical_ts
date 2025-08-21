@@ -6,6 +6,7 @@ interface Book {
   // method
   printAuthor(): void;
   printTitle(message: string): string;
+  printSomething: (someValue: number) => number;
 }
 
 const deepWork: Book = {
@@ -21,7 +22,23 @@ const deepWork: Book = {
   printTitle(message) {
     return `${this.title} ${message}`;
   },
+  //first option
+  // printSomething: function (someValue) {
+  //   return someValue;
+  // },
+
+  //second option
+  // printSomething: (someValue) => {
+  //   console.log(deepWork);
+
+  //   return someValue;
+  // },
+
+  //third option
+
+  printSomething(someValue) {
+    return someValue;
+  },
 };
 
-deepWork.printAuthor();
-const result = deepWork.printTitle("is awesome book");
+deepWork.printSomething(34);
