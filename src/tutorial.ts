@@ -1,16 +1,19 @@
-let person: [string, number] = ["john", 25];
-
-let date: readonly [number, number, number] = [12, 17, 2001];
-// date.push("five"); // string
-// date.push(5); // cannot
-
-function getPerson(): [string, number] {
-  return ["john", 25];
+enum ServerResponseStatus {
+  Success,
+  Error,
 }
 
-let randomPerson = getPerson();
+interface ServerResponse {
+  result: ServerResponseStatus;
+  data: string[];
+}
 
-console.log(randomPerson[0]);
-console.log(randomPerson[1]);
+function getServerResponse(): ServerResponse {
+  return {
+    result: ServerResponseStatus.Success,
+    data: ["first item", "second item"],
+  };
+}
 
-let susan: [string, number?] = ["susan"];
+const response: ServerResponse = getServerResponse();
+console.log(response);
