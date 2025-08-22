@@ -1,57 +1,41 @@
+function getEmployee(): Person | DogOwner | Manager {
+  const random = Math.random();
+
+  if (random < 0.33) {
+    return {
+      name: "john",
+    };
+  } else if (random < 0.56) {
+    return {
+      name: "sarah",
+      dogName: "rex",
+    };
+  } else {
+    return {
+      name: "bob",
+      managePeople() {
+        console.log("Managing people...");
+      },
+      delegateTasks() {
+        console.log("Delegating tasks...");
+      },
+    };
+  }
+}
+
 interface Person {
   name: string;
-  getDetails(): string;
 }
 
-interface DogOwner {
+interface DogOwner extends Person {
   dogName: string;
-  getDogDetails(): string;
 }
 
-interface Person {
-  age: number;
-}
-
-const person: Person = {
-  name: "john",
-  age: 30,
-  getDetails() {
-    return `Name ${this.name}, Age: ${this.age}`;
-  },
-};
-
-interface Employee extends Person {
-  employeeId: number;
-}
-
-const employee: Employee = {
-  name: "jane",
-  age: 28,
-  employeeId: 123,
-  getDetails() {
-    return `Name ${this.name}, Age: ${this.age}, Employee ID: ${this.employeeId}`;
-  },
-};
-
-console.log(employee.getDetails());
-
-interface Manager extends Person, DogOwner {
+interface Manager extends Person {
   managePeople(): void;
+  delegateTasks(): void;
 }
 
-const manager: Manager = {
-  name: "bob",
-  age: 35,
-  dogName: "rex",
-  getDetails() {
-    return `Name ${this.name}, Age: ${this.age}`;
-  },
-  getDogDetails() {
-    return `Name ${this.dogName}, Age: ${this.age}`;
-  },
-  managePeople() {
-    console.log("Managing people");
-  },
-};
+const employee: Person | DogOwner | Manager = getEmployee();
 
-manager.managePeople();
+console.log(employee);
