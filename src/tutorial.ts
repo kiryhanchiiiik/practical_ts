@@ -1,49 +1,51 @@
-function getEmployee(): Person | DogOwner | Manager {
-  const random = Math.random();
+// type Person = {
+//   name: string;
+//   age: number;
+// };
 
-  if (random < 0.33) {
-    return {
-      name: "john",
-    };
-  } else if (random < 0.56) {
-    return {
-      name: "sarah",
-      dogName: "rex",
-    };
-  } else {
-    return {
-      name: "bob",
-      managePeople() {
-        console.log("Managing people...");
-      },
-      delegateTasks() {
-        console.log("Delegating tasks...");
-      },
-    };
-  }
-}
+// let john: Person = { name: "John", age: 30 };
+
+// interface Person {
+//   name: string;
+//   age: number;
+// }
+
+// let john: Person = { name: "John", age: 30 };
+
+// Type alias for a primitive type
+type Score = number;
+type NumberOrString = number | string;
+// Type alias for literal types
+type Direction = "up" | "down" | "left" | "right";
+
+// Using the type aliases
+let gameScore: Score = 100;
+let move: Direction = "up";
 
 interface Person {
   name: string;
+  greet(): void;
 }
 
-interface DogOwner extends Person {
-  dogName: string;
+class Employee implements Person {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  greet() {
+    console.log(`Hello, my name is ${this.name}`);
+  }
 }
 
-interface Manager extends Person {
-  managePeople(): void;
-  delegateTasks(): void;
-}
+let john = new Employee("John");
+john.greet(); // Outputs: Hello, my name is John
 
-const employee: Person | DogOwner | Manager = getEmployee();
+const propName = "age";
 
-console.log(employee);
+type Animal = {
+  [propName]: number;
+};
 
-function isManager(obj: Person | DogOwner | Manager): boolean {
-  return "managePeople" in obj;
-}
-
-if (isManager(employee)) {
-  employee.delegateTasks();
-}
+let tiger: Animal = { [propName]: 5 };
