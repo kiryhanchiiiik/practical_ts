@@ -1,7 +1,15 @@
 enum ServerResponseStatus {
-  Success,
-  Error,
+  Success = 200,
+  Error = 500,
 }
+
+Object.values(ServerResponseStatus).forEach((value) => {
+  if (typeof value === "number") {
+    console.log(value);
+  }
+});
+
+console.log(ServerResponseStatus);
 
 interface ServerResponse {
   result: ServerResponseStatus;
@@ -10,7 +18,7 @@ interface ServerResponse {
 
 function getServerResponse(): ServerResponse {
   return {
-    result: ServerResponseStatus.Success,
+    result: 200,
     data: ["first item", "second item"],
   };
 }
