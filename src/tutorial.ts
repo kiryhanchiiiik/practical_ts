@@ -1,27 +1,25 @@
-enum ServerResponseStatus {
-  Success = 200,
-  Error = 500,
+enum UserRole {
+  Admin,
+  Manager,
+  Employee,
 }
 
-Object.values(ServerResponseStatus).forEach((value) => {
-  if (typeof value === "number") {
-    console.log(value);
-  }
+type User = {
+  id: number;
+  name: string;
+  role: UserRole;
+  contact: [string, string];
+};
+
+function createUser(user: User) {
+  return user;
+}
+
+const user: User = createUser({
+  id: 1,
+  name: "john doe",
+  role: UserRole.Admin,
+  contact: ["john@gmail.com", "111-222-333"],
 });
 
-console.log(ServerResponseStatus);
-
-interface ServerResponse {
-  result: ServerResponseStatus;
-  data: string[];
-}
-
-function getServerResponse(): ServerResponse {
-  return {
-    result: 200,
-    data: ["first item", "second item"],
-  };
-}
-
-const response: ServerResponse = getServerResponse();
-console.log(response);
+console.log(user);
