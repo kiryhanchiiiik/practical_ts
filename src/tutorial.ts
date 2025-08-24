@@ -1,25 +1,36 @@
-enum UserRole {
-  Admin,
-  Manager,
-  Employee,
+let someValue: any = "this is a string";
+
+let strLength: number = (someValue as string).length;
+
+type Bird = {
+  name: string;
+};
+
+let birdString = '{"name": "Eagle"}';
+let dogString = '{"breed": "Poodle"}';
+
+let birdObject = JSON.parse(birdString);
+let dogObject = JSON.parse(dogString);
+
+let bird = birdObject as Bird;
+let dog = dogObject as Bird;
+
+console.log(bird.name);
+console.log(dog.name);
+
+enum Status {
+  Pending = "pending",
+  Declined = "declined",
 }
 
 type User = {
-  id: number;
   name: string;
-  role: UserRole;
-  contact: [string, string];
+  status: Status;
 };
 
-function createUser(user: User) {
-  return user;
-}
+// save Status.Pending in the DB as a string
+// retrieve string from the DB
 
-const user: User = createUser({
-  id: 1,
-  name: "john doe",
-  role: UserRole.Admin,
-  contact: ["john@gmail.com", "111-222-333"],
-});
+const statusValue = "pending";
 
-console.log(user);
+const user: User = { name: "john", status: statusValue as Status };
