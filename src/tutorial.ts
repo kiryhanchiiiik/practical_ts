@@ -1,21 +1,11 @@
-type Dog = { type: "dog"; name: string; bark: () => void };
-type Cat = { type: "cat"; name: string; meow: () => void };
-type Animal = Dog | Cat;
-
-// function makeSound(animal: Animal) {
-//   if (animal.type === "dog") {
-//     // TypeScript knows that `animal` is a Dog in this block
-//     animal.bark();
-//   } else {
-//     // TypeScript knows that `animal` is a Cat in this block
-//     animal.meow();
-//   }
-// }
-
-function makeSound(animal: Animal) {
-  if ("bark" in animal) {
-    animal.bark();
+function printLength(str: string | null | undefined) {
+  if (str) {
+    console.log(str.length);
   } else {
-    animal.meow();
+    console.log("No string provided");
   }
 }
+
+printLength("Hello"); // Outputs: 5
+printLength(null); // Outputs: No string provided
+printLength(undefined); // Outputs: No string provided
