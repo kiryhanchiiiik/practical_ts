@@ -1,11 +1,22 @@
-function printLength(str: string | null | undefined) {
-  if (str) {
-    console.log(str.length);
+try {
+  throw new Error("This is an error");
+} catch (err) {
+  if (err instanceof Error) {
+    console.log(`Caught an Error object: ${err.message}`);
   } else {
-    console.log("No string provided");
+    console.log("unknown error...");
   }
 }
 
-printLength("Hello"); // Outputs: 5
-printLength(null); // Outputs: No string provided
-printLength(undefined); // Outputs: No string provided
+function checkInput(input: Date | string): string {
+  if (input instanceof Date) {
+    return input.getFullYear().toString();
+  }
+  return input;
+}
+
+const year = checkInput(new Date());
+const random = checkInput("2020-05-05");
+
+console.log(year);
+console.log(random);
