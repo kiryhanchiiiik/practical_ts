@@ -1,22 +1,29 @@
-try {
-  throw new Error("This is an error");
-} catch (err) {
-  if (err instanceof Error) {
-    console.log(`Caught an Error object: ${err.message}`);
-  } else {
-    console.log("unknown error...");
-  }
+type Student = {
+  name: string;
+  study: () => void;
+};
+
+type User = {
+  name: string;
+  login: () => void;
+};
+
+type Person = Student | User;
+
+const randomPerson = (): Person => {
+  return Math.random() > 0.5
+    ? { name: "john", study: () => console.log("Studying") }
+    : { name: "mary", login: () => console.log("Logging in") };
+};
+
+const person = randomPerson();
+
+function isStudent(person: Person): person is Student {
+  return (person as Student).study !== undefined;
 }
 
-function checkInput(input: Date | string): string {
-  if (input instanceof Date) {
-    return input.getFullYear().toString();
-  }
-  return input;
+if (isStudent(person)) {
+  person.study();
+} else {
+  person.login();
 }
-
-const year = checkInput(new Date());
-const random = checkInput("2020-05-05");
-
-console.log(year);
-console.log(random);
