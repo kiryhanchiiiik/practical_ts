@@ -1,29 +1,35 @@
-type Student = {
-  name: string;
-  study: () => void;
+type IncrementAction = {
+  type: "increment";
+  amount: number;
+  timestamp: number;
+  user: string;
 };
 
-type User = {
-  name: string;
-  login: () => void;
+type DecrementAction = {
+  type: "decrement";
+  amount: number;
+  timestamp: number;
+  user: string;
 };
 
-type Person = Student | User;
+type Action = IncrementAction | DecrementAction;
 
-const randomPerson = (): Person => {
-  return Math.random() > 0.5
-    ? { name: "john", study: () => console.log("Studying") }
-    : { name: "mary", login: () => console.log("Logging in") };
-};
+function reducer(state: number, action: Action): number {
+  switch (action.type) {
+    case "increment":
+      return state + action.amount;
+    case "decrement":
+      return state - action.amount;
 
-const person = randomPerson();
-
-function isStudent(person: Person): person is Student {
-  return (person as Student).study !== undefined;
+    default:
+      const unexpectedAction: never = action;
+      throw new Error(`Unexpected action: ${unexpectedAction}`);
+  }
 }
 
-if (isStudent(person)) {
-  person.study();
-} else {
-  person.login();
-}
+const newState = reducer(15, {
+  user: "john",
+  type: "increment",
+  amount: 5,
+  timestamp: 123456,
+});
