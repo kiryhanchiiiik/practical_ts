@@ -1,7 +1,18 @@
-// let array1: string[] = ["Apple", "Banana", "Mango"];
-// let array2: number[] = [1, 2, 3];
-// let array3: boolean[] = [true, false, true];
+function genericFunction<T>(arg: T): T {
+  return arg;
+}
 
-let array1: Array<string> = ["Apple", "Banana", "Mango"];
-let array2: Array<number> = [1, 2, 3];
-let array3: Array<boolean> = [true, false, true];
+const someStringValue = genericFunction<string>("Hello TS");
+const someNumberValue = genericFunction<number>(2);
+
+interface GenericInterface<T> {
+  value: T;
+  getValue: () => T;
+}
+
+const genericString: GenericInterface<string> = {
+  value: "Suupp!!!",
+  getValue() {
+    return this.value;
+  },
+};
