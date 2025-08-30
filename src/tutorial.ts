@@ -16,3 +16,9 @@ const genericString: GenericInterface<string> = {
     return this.value;
   },
 };
+
+async function someFunc(): Promise<string> {
+  return "error";
+}
+
+const result = someFunc();
