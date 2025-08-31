@@ -1,37 +1,31 @@
-type Car = {
-  brand: string;
-  model: string;
-};
-
-const car: Car = {
-  brand: "ford",
-  model: "mustang",
-};
-
-type Product = {
-  name: string;
-  price: number;
-};
-
-const product: Product = {
-  name: "shoes",
-  price: 1.99,
-};
-
-type Student = {
-  name: string;
-  age: number;
-};
-
-const student: Student = {
-  name: "peter",
-  age: 20,
-};
-
-function printName<T extends { name: string }>(input: T) {
-  console.log(input.name);
+interface StoreData<T = any> {
+  data: T[];
 }
 
-printName(student);
-printName(product);
-// printName(car);
+const storeNumbers: StoreData<number> = {
+  data: [1, 2, 3, 4],
+};
+
+const randomStuff: StoreData = {
+  data: ["random", 1],
+};
+
+// const { data } = axios.get(someUrl);
+
+// axios.get<{ name: string }[]>(someUrl);
+
+// export class Axios {
+//   get<T = any, R = AxiosResponse<T>, D = any>(
+//     url: string,
+//     config?: AxiosRequestConfig<D>
+//   ): Promise<R>;
+// }
+
+// export interface AxiosResponse<T = any, D = any> {
+//   data: T;
+//   status: number;
+//   statusText: string;
+//   headers: RawAxiosResponseHeaders | AxiosResponseHeaders;
+//   config: InternalAxiosRequestConfig<D>;
+//   request?: any;
+// }
