@@ -1,5 +1,10 @@
-const btn = document.querySelector<HTMLButtonElement>(".test-btn")!;
+const taskForm = document.querySelector<HTMLFormElement>(".form");
+const formInput = document.querySelector<HTMLInputElement>(".form-input");
+const taskListElement = document.querySelector<HTMLUListElement>(".list");
 
-btn.addEventListener("click", () => {
-  console.log("something");
-});
+type Task = {
+  description: string;
+  isComplete: boolean;
+};
+
+const tasks: Task[] = [];
