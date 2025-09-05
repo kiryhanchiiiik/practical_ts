@@ -7,7 +7,14 @@ type Task = {
   isComplete: boolean;
 };
 
-const tasks: Task[] = [];
+const tasks: Task[] = loadTasks();
+
+tasks.forEach(renderTask);
+
+function loadTasks(): Task[] {
+  const storageTasks = localStorage.getItem("tasks");
+  return storageTasks ? JSON.parse(storageTasks) : [];
+}
 
 function createTask(event: SubmitEvent) {
   event.preventDefault();
@@ -23,6 +30,7 @@ function createTask(event: SubmitEvent) {
     // render tasks
     renderTask(task);
     // update local storage
+    updateStorage();
     formInput.value = "";
     return;
   }
@@ -39,5 +47,9 @@ function renderTask(task: Task): void {
   const taskElement = document.createElement("li");
   taskElement.textContent = task.description;
   taskListElement?.appendChild(taskElement);
+}
+
+function updateStorage(): void {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 taskForm?.addEventListener("submit", createTask);
